@@ -141,7 +141,7 @@ const About = () => {
           >
             {" "}
             <img
-              src="../src/assets/images/pineapple.png"
+              src="/images/pineapple.png"
               alt="pineapple-image"
               className="h-auto w-[80%] max-w-[500px]"
             />
@@ -154,7 +154,7 @@ const About = () => {
             className="relative custom-class rounded-3xl p-8 shadow-xl lg:h-[70%] lg:w-[80%] hidden lg:block"
           >
             <img
-              src="../src/assets/images/glass.png"
+              src="/images/glass.png"
               alt="hand-holding-glass"
               className="absolute h-auto w-[90%] max-w-[500px] bottom-0 left-0"
             />
@@ -191,7 +191,7 @@ const About = () => {
 
         <img
           ref={strawberriesRef}
-          src="../src/assets/images/strawberries.png"
+          src="/images/strawberries.png"
           alt="strawberry-image"
           className=" h-auto w-[50%] max-w-[500px] absolute lg:bottom-0 bottom-0 right-0 lg:right-0 z-10 lg:w-[17%] md:w-[25%]"
         />

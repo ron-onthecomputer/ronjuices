@@ -31,7 +31,7 @@ const Contact = () => {
         {/* Subscribe */}
         <div className="mt-16 rounded-3xl custom-class p-6 sm:p-8 relative ">
           <img
-            src="../src/assets/images/mint.png"
+            src="/images/mint.png"
             alt="mint-leaves"
             className=" h-auto w-[40%] max-w-[500px]  absolute top-[-25%] right-[0] md:w-[20%]"
           />

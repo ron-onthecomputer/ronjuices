@@ -8,7 +8,7 @@ export const products = [
     fruitBadgeBg: "bg-rose-100 text-rose-700",
     volume: "500ml",
     mostPopular: true,
-    src: "../src/assets/images/cranberryCan.png",
+    src: "/images/cranberryCan.png",
   },
   {
     id: "blueberry",
@@ -18,7 +18,7 @@ export const products = [
     accentColor: "text-[#284095]",
     fruitBadgeBg: "bg-indigo-100 text-indigo-700",
     volume: "500ml",
-    src: "../src/assets/images/blueberryCan.png",
+    src: "/images/blueberryCan.png",
   },
   {
     id: "kiwi",
@@ -29,7 +29,7 @@ export const products = [
     fruitBadgeBg: "bg-emerald-100 text-emerald-700",
     defaultHovered: true,
     volume: "500ml",
-    src: "../src/assets/images/kiwi.png",
+    src: "/images/kiwi.png",
   },
   {
     id: "watermelon",
@@ -40,7 +40,7 @@ export const products = [
 
     fruitBadgeBg: "bg-orange-100 text-orange-700",
     volume: "500ml",
-    src: "../src/assets/images/watermelon.png",
+    src: "/images/watermelon.png",
   },
   {
     id: "mango",
@@ -50,7 +50,7 @@ export const products = [
     accentColor: "text-[#ffa500]",
     fruitBadgeBg: "bg-amber-100 text-amber-700",
     volume: "500ml",
-    src: "../src/assets/images/mangoCan.png",
+    src: "/images/mangoCan.png",
   },
   {
     id: "grape",
@@ -60,7 +60,7 @@ export const products = [
     accentColor: "text-primary-900",
     fruitBadgeBg: "bg-purple-100 text-purple-700",
     volume: "500ml",
-    src: "../src/assets/images/grapeCan.png",
+    src: "/images/grapeCan.png",
   },
 ];
 

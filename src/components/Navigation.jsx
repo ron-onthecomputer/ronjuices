@@ -60,11 +60,7 @@ const Navigation = () => {
               duration={500}
               className="cursor-pointer"
             >
-              <img
-                src="../src/assets/images/logo.png"
-                alt="logo"
-                className="w-40 h-auto "
-              />
+              <img src="/images/logo.png" alt="logo" className="w-40 h-auto " />
             </Link>
           </div>
 
@@ -117,7 +113,7 @@ const Navigation = () => {
                     className="cursor-pointer block w-full h-full"
                   >
                     <img
-                      src="../src/assets/images/logo.png"
+                      src="/images/logo.png"
                       alt="logo"
                       className="w-full h-full object-contain transform translate-y-[-10%]"
                     />

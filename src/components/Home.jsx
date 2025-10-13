@@ -160,7 +160,7 @@ const Home = () => {
             {/* Headline */}
             {/* Mint Leaves */}
             <img
-              src="../src/assets/images/mint.png"
+              src="/images/mint.png"
               alt="mint-leaves"
               className=" h-auto w-[40%] max-w-[500px] md:w-[25%] md:right-[10%] absolute md:top-12 right-5 lg:top-20 lg:right-[45%] lg:w-[15%]"
             />
@@ -202,7 +202,7 @@ const Home = () => {
             className="absolute opacity-70 lg:opacity-100 left-0 top-1/2 transform -translate-y-1/2 -translate-x-[10%] space-y-4 z-1 md:top-[25%] lg:left-0 lg:top-1/2 lg:transform lg:-translate-y-1/2 lg:-translate-x-[10%]"
           >
             <img
-              src="../src/assets/images/oranges.png"
+              src="/images/oranges.png"
               alt="floating oranges"
               className="floating element h-auto w-[70%] max-w-[500px]"
             />
@@ -217,7 +217,7 @@ const Home = () => {
               {/* Blueberry Can */}
               <img
                 ref={(el) => (canRefs.current[1] = el)}
-                src="../src/assets/images/blueberryCan.png"
+                src="/images/blueberryCan.png"
                 alt=""
                 className="inset-0 w-full h-[60%] object-cover transform translate-x-[-10%] md:translate-x-[-30%]"
                 style={{ animationDelay: "1s" }}
@@ -226,7 +226,7 @@ const Home = () => {
               {/* Cranberry Can */}
               <img
                 ref={(el) => (canRefs.current[0] = el)}
-                src="../src/assets/images/cranberryCan.png"
+                src="/images/cranberryCan.png"
                 alt="cranberry-can"
                 className="absolute inset-0 w-full h-[80%] object-cover transform  translate-x-[20%] md:translate-x-5"
               />
@@ -235,7 +235,7 @@ const Home = () => {
             {/* Blueberries */}
             <img
               ref={strawberriesRef}
-              src="../src/assets/images/blueberries.png"
+              src="/images/blueberries.png"
               alt="floating blueberries"
               className="absolute bottom-0 h-auto lg:w-[20%] w-[60%] right-0 max-w-[500px]"
             />
