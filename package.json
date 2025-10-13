@@ -1,7 +1,7 @@
 {
   "name": "ron-juices",
   "version": "1.0.0",
-  "description": "RonJuices - Premium juice company one-page website",
+  "description": "RonJuices - Premium juice website",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
@@ -10,6 +10,7 @@
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "flowbite": "^3.1.2",
     "gsap": "^3.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
