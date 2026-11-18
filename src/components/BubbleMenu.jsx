@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { gsap } from "gsap";
 
 export default function BubbleMenu({
@@ -22,7 +22,7 @@ export default function BubbleMenu({
   const bubblesRef = useRef([]);
   const labelRefs = useRef([]);
 
-  const menuItems = items?.length ? items : DEFAULT_ITEMS;
+  const menuItems = useMemo(() => items ?? [], [items]);
   const containerClassName = [
     "bubble-menu",
     useFixedPosition ? "fixed" : "absolute",

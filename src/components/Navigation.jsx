@@ -3,15 +3,44 @@ import { Link } from "react-scroll";
 import { navLinks } from "../data/navigation";
 import BubbleMenu from "./BubbleMenu";
 import { DEFAULT_ITEMS } from "../data/navigation";
+import useCartStore, { selectCartCount } from "../stores/useCartStore";
+import CartDrawer from "./CartDrawer";
+import { useNavigate } from "react-router-dom";
+import { useProductCatalog } from "../contexts/ProductCatalog";
+
+const CartButton = ({ className = "", isOpen, onClick }) => {
+  const cartCount = useCartStore(selectCartCount);
+  const displayCount = cartCount > 99 ? "99+" : cartCount;
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`relative montserrat grid h-11 w-11 place-items-center rounded-full border  text-[#3E0162]  hover:border-[#3E0162]  focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7E57C2] focus-visible:ring-offset-2 ${className}`}
+      aria-label={`Open basket, ${cartCount} ${
+        cartCount === 1 ? "item" : "items"
+      }`}
+      aria-expanded={isOpen}
+      aria-controls="shopping-basket"
+    >
+      <i className="bi bi-cart2 text-2xl" aria-hidden="true"></i>
+      <span className="absolute -right-1.5 -top-1.5 flex min-h-5 min-w-5 items-center justify-center rounded-full bg-[#3E0162] px-1 text-[10px] font-bold leading-none text-white ring-2 ring-[#f5f0e8]">
+        {displayCount}
+      </span>
+    </button>
+  );
+};
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const navigate = useNavigate();
+  const { byId } = useProductCatalog();
 
   const underlineRef = useRef(null);
   const linkRefs = useRef({});
 
-  // Scroll event to track active section
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -53,21 +82,18 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="hidden md:block flex-shrink-0">
+          <div className="hidden md:block flex-shrink-0 ">
             <Link
               to="home"
               smooth={true}
-              duration={500}
+              duration={300}
               className="cursor-pointer"
             >
-              <img src="/images/logo.png" alt="logo" className="w-40 h-auto " />
+              <img src="/images/logo.png" alt="logo" className="w-28 h-auto" />
             </Link>
           </div>
-
-          {/* Navigation */}
           <div className="hidden md:block relative">
             <div className="flex space-x-8 relative pb-2">
-              {/* Animated Underline */}
               <div
                 ref={underlineRef}
                 className="absolute bottom-0 h-0.5 bg-[#7E57C2] transition-all duration-300 rounded-full"
@@ -86,7 +112,7 @@ const Navigation = () => {
                     className={`px-3 py-2 text-sm font-semibold transition-colors duration-200 cursor-pointer montserrat ${
                       activeSection === link.id
                         ? "text-[#7E57C2]"
-                        : "text-[#3E0162] hover:text-[#7E57C2]"
+                        : "text-[#1E1E1E] hover:text-[#7E57C2]"
                     }`}
                   >
                     {link.label}
@@ -96,9 +122,19 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Order Now button */}
-          <div className="hidden md:flex items-center space-x-4">
-            <button className="btn-primary py-3">Order now</button>
+          <div className="hidden md:flex items-center gap-5">
+            <Link
+              to="products"
+              smooth={true}
+              duration={500}
+              className="btn-secondary cursor-pointer px-3 text-sm py-2 grot"
+            >
+              Order now
+            </Link>
+            <CartButton
+              isOpen={isCartOpen}
+              onClick={() => setIsCartOpen(true)}
+            />
           </div>
 
           {/* Mobile menu */}
@@ -128,9 +164,23 @@ const Navigation = () => {
               animationDuration={0.5}
               staggerDelay={0.12}
             />
+            <CartButton
+              className="fixed right-24 top-8 z-[100] h-10 w-10"
+              isOpen={isCartOpen}
+              onClick={() => setIsCartOpen(true)}
+            />
           </div>
         </div>
       </div>
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        productsById={byId}
+        onCheckout={() => {
+          setIsCartOpen(false);
+          navigate("/checkout");
+        }}
+      />
     </nav>
   );
 };

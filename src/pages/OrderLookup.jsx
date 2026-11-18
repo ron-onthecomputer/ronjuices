@@ -1,0 +1,9 @@
+import { useState } from "react";
+import { api, apiMessage } from "../api/client";
+import { formatUsdCents } from "../utils/currency";
+
+export default function OrderLookup() {
+  const [number, setNumber] = useState(""); const [email, setEmail] = useState(""); const [order, setOrder] = useState(null); const [error, setError] = useState("");
+  const search = async (event) => { event.preventDefault(); setError(""); setOrder(null); try { const response = await api.get(`/orders/${encodeURIComponent(number.trim())}`, { params: { email } }); setOrder(response.data.data); } catch (caught) { setError(apiMessage(caught)); } };
+  return <main className="mx-auto min-h-screen max-w-2xl px-6 pt-32"><h1 className="bagerich text-5xl text-[#3E0162]">Find your order</h1><form onSubmit={search} className="mt-8 grid gap-3 sm:grid-cols-[1fr_1fr_auto]"><label className="sr-only" htmlFor="order-number">Order number</label><input id="order-number" className="min-h-12 border p-3" value={number} onChange={(e) => setNumber(e.target.value)} placeholder="RJ-20261109-…" required /><label className="sr-only" htmlFor="order-email">Checkout email</label><input id="order-email" type="email" className="min-h-12 border p-3" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Checkout email" required /><button className="bg-[#3E0162] px-6 text-white">Search</button></form><p className="mt-3 text-red-700" role="alert">{error}</p>{order && <section className="mt-8 rounded bg-white p-6 shadow" aria-live="polite"><div className="flex justify-between"><h2 className="font-mono font-bold">{order.orderNumber}</h2><span className="rounded-full bg-purple-100 px-3 py-1 text-sm">{order.status.replaceAll('_',' ')}</span></div><p className="mt-4">Payment: {order.paymentStatus}</p><p className="mt-2 font-bold">Total: {formatUsdCents(order.totalCents, order.currency)}</p></section>}</main>;
+}

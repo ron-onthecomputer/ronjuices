@@ -1,8 +1,49 @@
+@import "flowbite/dist/flowbite.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import "flowbite/dist/flowbite.css";
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  color: #f5f0e8;
+  background: #242424;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 850ms cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: clip-path;
+}
+
+.preloader--leaving {
+  clip-path: inset(0 0 100% 0);
+  pointer-events: none;
+}
+
+.preloader__fruit {
+  width: clamp(3.75rem, 7vw, 5.5rem);
+  height: auto;
+  color: #f5f0e8;
+  fill: currentColor;
+  animation: preloader-fruit-in 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes preloader-fruit-in {
+  from {
+    opacity: 0;
+    transform: scale(0.72) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
 /* Custom styles */
 @layer base {
   /* * {
@@ -10,6 +51,11 @@
   }*/
   html {
     scroll-behavior: smooth;
+  }
+
+  :focus-visible {
+    outline: 3px solid #7e57c2;
+    outline-offset: 3px;
   }
 
   body {
@@ -41,6 +87,9 @@
   .montserrat {
     font-family: "Montserrat", sans-serif;
   }
+  .grot {
+    font-family: "Space Grotesk", sans-serif;
+  }
   .reenie-beanie {
     font-family: "Reenie Beanie", cursive;
     font-style: italic;
@@ -68,6 +117,21 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (hover: none) {
+  .product-tile .product-description { display: block; }
+  .product-tile .container { display: none; }
+  .custom-cursor { display: none; }
+}
+
 @layer utilities {
   .text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -79,9 +143,9 @@
   }
 }
 .custom-class {
-  border: 1px solid #00544c;
+  border: 1px solid #3e0162;
   backdrop-filter: blur(3px);
-  background-color: #00544c51;
+  background-color: #3e01624e;
 }
 footer::before {
   content: "";
@@ -228,7 +292,9 @@ footer::before {
   border-radius: 2px;
   display: block;
   margin: 0 auto;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
   transform-origin: center;
 }
 
@@ -333,7 +399,9 @@ footer::before {
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
   will-change: transform;
   box-sizing: border-box;
   white-space: nowrap;

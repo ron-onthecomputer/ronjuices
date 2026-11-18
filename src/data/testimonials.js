@@ -4,7 +4,7 @@ export const testimonials = [
     name: "Tino Duri",
     source: "Google user",
     quote:
-      "I've tried a lot of juice brands, but this one really stands out. Bold flavors, not artificial, and I can actually recognize the ingredients.",
+      "I've tried a lot of juice brands, but this one really stands out. Brilliant!",
     bg: "#70A51B",
   },
   {

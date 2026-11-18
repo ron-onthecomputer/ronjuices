@@ -29,15 +29,15 @@ const Contact = () => {
         </div>
 
         {/* Subscribe */}
-        <div className="mt-16 rounded-3xl custom-class p-6 sm:p-8 relative ">
+        <div className="mt-16 custom-class p-6 sm:p-8 relative ">
           <img
             src="/images/mint.png"
             alt="mint-leaves"
             className=" h-auto w-[40%] max-w-[500px]  absolute top-[-25%] right-[0] md:w-[20%]"
           />
           <div className="container px-4">
-            <h3 className="text-2xl text-[#00544C] montserrat">Subscribe Us</h3>
-            <p className="my-2 text-sm text-[#00544C] max-w-xl satoshi">
+            <h3 className="text-2xl text-[#3E0162] montserrat">Subscribe Us</h3>
+            <p className="my-2 text-sm text-[#3E0162] max-w-xl satoshi">
               Subscribe to our newsletter and be among the <br /> first to
               receive new updates
             </p>
@@ -47,10 +47,10 @@ const Contact = () => {
                 type="email"
                 required
                 placeholder="E-mail"
-                className="text-[#00544C] px-4 py-4 outline-none focus:ring-1 border-none focus:ring-primary-900 md:w-[50%]"
+                className="text-[#3E0162] px-4 py-4 outline-none focus:ring-1 border-none focus:ring-primary-900 md:w-[50%]"
               />
               <button
-                className="px-6 custom-button py-4 flex items-center relative rounded-full bg-[#00544C] text-white transition-all duration-500 md:w-[20%]
+                className="px-6 custom-button py-4 flex items-center relative rounded-full bg-[#3E0162] text-white transition-all duration-500 md:w-[20%]
                 lg:hover:w-[25%]
               "
               >

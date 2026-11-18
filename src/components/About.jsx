@@ -31,7 +31,7 @@ const About = () => {
             end: "bottom 20%",
             toggleActions: "play none none reverse",
           },
-        }
+        },
       );
 
       // Image container animation
@@ -50,7 +50,7 @@ const About = () => {
             end: "bottom 20%",
             toggleActions: "play none none reverse",
           },
-        }
+        },
       );
 
       // Text content animation
@@ -69,7 +69,7 @@ const About = () => {
             end: "bottom 20%",
             toggleActions: "play none none reverse",
           },
-        }
+        },
       );
 
       // Strawberries animation
@@ -87,7 +87,7 @@ const About = () => {
             end: "bottom 10%",
             toggleActions: "play none none reverse",
           },
-        }
+        },
       );
 
       // Continuous floating animation for pineapples
@@ -130,7 +130,7 @@ const About = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="lg:py-20 bg-secondary-50 relative"
+      className="relative overflow-hidden bg-secondary-50 lg:py-20"
     >
       <div className="max-w-7xl md:h-[60vh] lg:h-full mx-auto px-4 sm:px-6 lg:px-8 md:flex relative items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center min-h-screen ">
@@ -163,23 +163,23 @@ const About = () => {
           {/* Right Side - Text Content */}
           <div
             ref={textContentRef}
-            className="space-y-8 md:absolute lg:relative"
+            className="relative z-20 min-w-0 space-y-8"
           >
             {/* Headline */}
-            <h2 className="text-5xl md:text-3xl font-semibold montserrat text-[#00544C]">
+            <h2 className="text-5xl md:text-3xl font-semibold montserrat text-[#1E1E1E]">
               Our Story
             </h2>
 
             {/* Story Text */}
             <div className="space-y-6">
-              <p className="text-lg md:text-xl text-[#00544C] montserrat font-medium leading-relaxed">
+              <p className="text-lg md:text-xl text-[#1E1E1E] montserrat font-medium leading-relaxed">
                 RonJuices began with a simple idea — real juice should taste
                 like the fruit it comes from. What started as a small kitchen
                 experiment quickly grew into a passion for creating juices that
                 are as vibrant and refreshing as they are nourishing.
               </p>
 
-              <p className="text-lg md:text-xl text-[#00544C] montserrat font-medium leading-relaxed">
+              <p className="text-lg md:text-xl text-[#1E1E1E] montserrat font-medium leading-relaxed">
                 Every bottle of RonJuices is crafted with care, using only the
                 best nature has to offer. We're here to bring a little more
                 color, energy, and freshness to your day — one sip at a time.

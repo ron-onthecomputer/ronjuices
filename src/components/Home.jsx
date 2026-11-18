@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
@@ -11,7 +11,6 @@ const Home = () => {
   const descriptionRef = useRef(null);
   const buttonsRef = useRef(null);
   const orangeSlicesRef = useRef(null);
-  const mintRef = useRef(null);
   const cansRef = useRef(null);
   const canRefs = useRef([]);
   const strawberriesRef = useRef(null);
@@ -19,11 +18,10 @@ const Home = () => {
   useEffect(() => {
     const cans = canRefs.current;
     const ctx = gsap.context(() => {
-      // Hero section entrance animation
       gsap.fromTo(
         heroRef.current,
         { opacity: 0 },
-        { opacity: 1, duration: 1, ease: "power2.out" }
+        { opacity: 1, duration: 1, ease: "power2.out" },
       );
 
       // Headline animation
@@ -37,7 +35,7 @@ const Home = () => {
           stagger: 0.2,
           ease: "power3.out",
           delay: 0.3,
-        }
+        },
       );
 
       // Description animation
@@ -50,7 +48,7 @@ const Home = () => {
           duration: 1,
           ease: "power2.out",
           delay: 0.8,
-        }
+        },
       );
 
       // Buttons animation
@@ -64,7 +62,7 @@ const Home = () => {
           stagger: 0.1,
           ease: "power2.out",
           delay: 1.2,
-        }
+        },
       );
 
       // Floating orange slices
@@ -79,7 +77,7 @@ const Home = () => {
           stagger: 0.2,
           ease: "power2.out",
           delay: 1.5,
-        }
+        },
       );
 
       // Cans animation
@@ -93,7 +91,7 @@ const Home = () => {
           duration: 1.5,
           ease: "power3.out",
           delay: 1.8,
-        }
+        },
       );
 
       gsap.fromTo(
@@ -106,7 +104,7 @@ const Home = () => {
           duration: 1.5,
           ease: "power3.out",
           delay: 2.2,
-        }
+        },
       );
       // Strawberries animation
       gsap.fromTo(
@@ -118,7 +116,7 @@ const Home = () => {
           duration: 1.2,
           ease: "power2.out",
           delay: 2.5,
-        }
+        },
       );
 
       // Continuous floating animation for orange slices
@@ -151,8 +149,6 @@ const Home = () => {
       ref={heroRef}
       className="min-h-screen bg-secondary-50 relative overflow-hidden flex"
     >
-      {/* Decorative vertical lines */}
-
       <div className="max-w-7xl mx-auto px-4 md:mt-10 sm:px-6 lg:px-8  z-10 ">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 lg:gap-10 md:gap-0 items-center min-h-screen py-10  ">
           {/* Left Content */}
@@ -166,8 +162,8 @@ const Home = () => {
             />
             <div ref={headlineRef} className="space-y-4 ">
               <h1 className="text-6xl md:text-6xl lg:text-8xl font-bold text-[#3E0162] leading-tight font-askey">
-                <div className="relative lg:pb-5">Just say</div>
-                <div className="relative lg:pb-5">goodbye to</div>
+                <div className="relative lg:pb-3">Just say</div>
+                <div className="relative lg:pb-3">goodbye to</div>
                 <div className="relative ">
                   being{" "}
                   <span className="border-b-2 border-dashed border-primary-900">
@@ -177,23 +173,25 @@ const Home = () => {
                 </div>
               </h1>
             </div>
-            {/* Description */}
             <div ref={descriptionRef}>
-              <p className="text-lg md:text-xl text-primary-900 leading-relaxed max-w-lg font-clash-display py-1">
+              <p className="text-lg md:text-xl text-[#1E1E1E] leading-relaxed max-w-lg font-clash-display py-1">
                 Pure energy. Zero crash. <br /> 100% natural ingredients for
                 unstoppable performance.
               </p>
             </div>
-
-            {/* Buttons */}
-            <div ref={buttonsRef} className="flex sm:flex-row gap-7 w-full">
-              <button className="btn-primary md:py-6 w-[50%] md:w-[50%] lg:w-[40%] justify-around text-md">
-                Order now{" "}
-                <i className="bi bi-arrow-up-right-square text-[1.5rem] hover:text-primary-900"></i>
-              </button>
-              <button className="btn-secondary lg:w-[40%] md:w-[50%] w-[50%] courier-prime text-md">
+            <div
+              ref={buttonsRef}
+              className="flex sm:flex-row gap-5 w-full grot"
+            >
+              <Link
+                to="/#products"
+                className="btn-primary grot md:py-4 w-[50%] md:w-[50%] lg:w-[40%] justify-around text-md"
+              >
                 Explore more
-              </button>
+              </Link>
+              {/* <button className="btn-secondary lg:w-[40%] md:w-[50%] w-[50%]  text-md">
+                Explore more
+              </button> */}
             </div>
           </div>
           {/* Floating Orange Slices */}
@@ -204,23 +202,23 @@ const Home = () => {
             <img
               src="/images/oranges.png"
               alt="floating oranges"
-              className="floating element h-auto w-[70%] max-w-[500px]"
+              className="floating pointer-events-none select-none element h-auto w-[70%] max-w-[500px]"
             />
           </div>
-          {/* Right Content - Product Imagery */}
+
           <div className="w-full h-full">
             {/* Product Cans */}
             <div
               ref={cansRef}
-              className="relative z-20 md:flex justify-center g-2 lg:h-full lg:w-full hidden md:h-[70%] md:w-full  "
+              className="relative pointer-events-none select-none z-20 md:flex justify-center g-2 lg:h-full lg:w-full hidden md:h-[70%] md:w-full  "
             >
               {/* Blueberry Can */}
               <img
                 ref={(el) => (canRefs.current[1] = el)}
                 src="/images/blueberryCan.png"
                 alt=""
-                className="inset-0 w-full h-[60%] object-cover transform translate-x-[-10%] md:translate-x-[-30%]"
-                style={{ animationDelay: "1s" }}
+                className="inset-0 pointer-events-none select-none w-full h-[60%] object-cover transform translate-x-[-10%] md:translate-x-[-30%]"
+                style={{ animationDelay: "2s" }}
               />
 
               {/* Cranberry Can */}
@@ -228,7 +226,7 @@ const Home = () => {
                 ref={(el) => (canRefs.current[0] = el)}
                 src="/images/cranberryCan.png"
                 alt="cranberry-can"
-                className="absolute inset-0 w-full h-[80%] object-cover transform  translate-x-[20%] md:translate-x-5"
+                className="absolute pointer-events-none select-none inset-0 w-full h-[80%] object-cover transform  translate-x-[20%] md:translate-x-5"
               />
             </div>
 
@@ -237,7 +235,7 @@ const Home = () => {
               ref={strawberriesRef}
               src="/images/blueberries.png"
               alt="floating blueberries"
-              className="absolute bottom-0 h-auto lg:w-[20%] w-[60%] right-0 max-w-[500px]"
+              className="absolute pointer-events-none select-none bottom-5 h-auto lg:w-[20%] w-[60%] right-0 max-w-[500px]"
             />
           </div>
         </div>

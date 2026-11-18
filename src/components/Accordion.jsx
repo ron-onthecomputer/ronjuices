@@ -6,13 +6,12 @@ export default function Accordion({ question, answer, isOpen, onToggle }) {
         className="h-full lg:mb-2 w-full text-left text-[#3E0162] flex font-medium justify-between items-center"
       >
         Q: {question}
-        {isOpen ? (
-          <i className="bi bi-dash text-xl"></i>
-        ) : (
-          <i className="bi bi-plus text-xl "></i>
-        )}
+        <i
+          className={`bi bi-plus text-xl transform duration-300 ${
+            isOpen ? "rotate-45" : "rotate-0"
+          }`}
+        ></i>
       </button>
-
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${
           isOpen ? "max-h-44 opacity-100" : "max-h-0 opacity-0"
