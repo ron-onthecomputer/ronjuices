@@ -6,3 +6,4 @@ server/dist/
 server/.env
 coverage/
 *.log
+public/images/uploads/

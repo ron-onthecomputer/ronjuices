@@ -7,7 +7,16 @@ export const api = axios.create({
   headers: { Accept: "application/json" },
 });
 
-export const apiMessage = (error) =>
-  error?.response?.data?.error?.message ||
-  error?.message ||
-  "Something went wrong. Please try again.";
+export const apiMessage = (error) => {
+  const fieldErrors = error?.response?.data?.error?.details?.fieldErrors;
+  const firstFieldError = fieldErrors
+    ? Object.values(fieldErrors).flat().find(Boolean)
+    : null;
+
+  return (
+    firstFieldError ||
+    error?.response?.data?.error?.message ||
+    error?.message ||
+    "Something went wrong. Please try again."
+  );
+};

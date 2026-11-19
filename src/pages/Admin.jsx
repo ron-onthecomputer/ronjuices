@@ -27,6 +27,13 @@ const blankProduct = {
 
 const MAX_PRODUCT_IMAGE_BYTES = 10 * 1024 * 1024;
 
+const normalizeSlug = (value) =>
+  value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 function DeleteProductModal({ product, isDeleting, onCancel, onConfirm }) {
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -240,7 +247,10 @@ export default function Admin() {
     setProductCreationStatus("idle");
     setIsCreatingProduct(true);
     try {
-      const response = await api.post("/admin/products", newProduct);
+      const response = await api.post("/admin/products", {
+        ...newProduct,
+        slug: normalizeSlug(newProduct.slug),
+      });
       setProducts((all) =>
         [...all, response.data.data].sort((a, b) =>
           a.name.localeCompare(b.name),
@@ -499,13 +509,21 @@ export default function Admin() {
                       className="mt-1 min-h-11 w-full border border-gray-300 bg-white p-2 outline-none focus:border-[#3E0162] focus:ring-1 focus:ring-[#3E0162]"
                       type={type || "text"}
                       value={newProduct[name]}
+                      pattern={name === "slug" ? "[a-z0-9-]+" : undefined}
+                      title={
+                        name === "slug"
+                          ? "Use lowercase letters, numbers and hyphens only"
+                          : undefined
+                      }
                       onChange={(e) =>
                         setNewProduct({
                           ...newProduct,
                           [name]:
                             type === "number"
                               ? Number(e.target.value)
-                              : e.target.value,
+                              : name === "slug"
+                                ? normalizeSlug(e.target.value)
+                                : e.target.value,
                         })
                       }
                       required

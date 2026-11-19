@@ -13,7 +13,7 @@ import {
 } from "../products/product.schemas.js";
 import type { ProductRepository } from "../products/product.types.js";
 import type { ProductWriteInput } from "../products/product.types.js";
-import { createR2ProductImageStorage, type ProductImageStorage } from "../products/product-image.storage.js";
+import { createProductImageStorage, type ProductImageStorage } from "../products/product-image.storage.js";
 import {
   adminCookieName,
   createAdminSession,
@@ -55,7 +55,7 @@ const productImageUpload = multer({
 
 export function createAdminRouter(
   products: ProductRepository,
-  imageStorage: ProductImageStorage = createR2ProductImageStorage(),
+  imageStorage: ProductImageStorage = createProductImageStorage(),
 ): Router {
   const router = Router();
   router.post(
