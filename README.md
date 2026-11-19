@@ -183,20 +183,15 @@ The admin dashboard is available at `/admin` and supports:
 
 ## Product images
 
-The storefront's original catalogue images live in `public/`. Image storage is selected automatically by the runtime environment:
-
-- In development, generated assets are written to `public/images/uploads/` and served by Vite.
-- In production, generated assets are uploaded to Cloudflare R2 when all `R2_*` variables are configured.
-
-For each upload:
+The storefront's original catalogue images live in `public/`. New admin uploads use Cloudflare R2:
 
 1. The admin uploads one PNG of up to 10 MB.
 2. The API validates and rotates it with Sharp.
 3. It generates responsive PNG, WebP, and AVIF assets.
-4. The assets are stored locally during development or in R2 during production.
+4. The assets are stored in R2 with immutable cache headers.
 5. Their public URLs are saved with the product in PostgreSQL.
 
-Development uploads are ignored by Git. All five `R2_*` variables must be configured together for production uploads. When none are set in production, the application still runs, but admin image uploads return a configuration error.
+All five `R2_*` variables must be configured together. When none are set, the application still runs, but admin image uploads return a configuration error.
 
 ## Payments and orders
 
